@@ -11,9 +11,6 @@ import shoe1 from '../assets/Screenshot 2025-12-30 144143.png';
 import shoe2 from '../assets/Screenshot 2025-12-30 144200.png';
 
 const Projects = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
-
   const projects = [
     {
       id: 1,
@@ -23,7 +20,7 @@ const Projects = () => {
         'A high-performance agricultural diagnostic platform. I engineered a custom neural network backend to identify crop pathologies, integrated with a real-time React dashboard for instant treatment protocols.',
       images: [agro1, agro2],
       stack: ['Django REST', 'React', 'PyTorch', 'JWT Auth'],
-      liveUrl: 'https://agroa.netlify.app/',
+      liveUrl: 'https://agro-ai-frontend.vercel.app/',
       frontEndRepo: 'https://github.com/Sameer251369/AGRO-AI-frontend.git',
       backEndRepo: 'https://github.com/Sameer251369/AGRO-AI-backend-.git',
       color: '#10b981',
@@ -36,7 +33,7 @@ const Projects = () => {
         'A luxury footwear storefront built for scale. Features a stateless Django architecture, granular search filtering, persistent cart management, and a highly polished checkout experience.',
       images: [shoe1, shoe2],
       stack: ['Django DRF', 'Tailwind CSS', 'Redux', 'PostgreSQL'],
-      liveUrl: 'https://shoecart1.netlify.app/',
+      liveUrl: 'https://shoecart-front.vercel.app/',
       frontEndRepo: 'https://github.com/Sameer251369/Shoecart.git',
       backEndRepo: 'https://github.com/Sameer251369/shoecart-backend.git',
       color: '#3b82f6',
@@ -44,138 +41,112 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" ref={ref} className="py-32 bg-[#020617] overflow-hidden">
+    <section id="projects" className="py-32 bg-[#020617] overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
+        
         {/* Section Heading */}
-        <div className="text-center mb-36">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
+        <div className="mb-32">
+          <motion.h2 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            className="text-5xl md:text-7xl font-black text-white tracking-tighter"
           >
-            <h2 className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tight">
-              Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-emerald-400 to-blue-500">Masterpieces</span>
-            </h2>
-            <p className="text-slate-400 max-w-2xl mx-auto text-xl font-light leading-relaxed tracking-wide">
-              A curated selection of full-stack applications where complex logic meets elegant design.
-            </p>
-          </motion.div>
+            SELECTED <span className="text-blue-500">WORKS</span>
+          </motion.h2>
         </div>
 
-        {/* Project List */}
-        <div className="space-y-64">
+        <div className="space-y-80">
           {projects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 100 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: 'easeOut' }}
-            >
-              <div className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-20 lg:gap-32 items-start`}>
+            <div key={project.id} className="relative">
+              {/* Flex container for Content and Visuals */}
+              <div className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-16 lg:gap-24 items-center`}>
                 
-                {/* TEXT CONTENT */}
-                <div className="w-full lg:w-1/2 space-y-10">
+                {/* 1. LEFT SIDE: SPACIOUS TEXT CONTENT */}
+                <motion.div 
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="w-full lg:w-1/2 space-y-8"
+                >
                   <div className="space-y-4">
-                    <div className="flex items-center gap-4">
-                      <span className="h-[2px] w-12 bg-blue-500 rounded-full" />
-                      <span className="text-blue-400 font-mono text-sm font-bold tracking-[0.3em] uppercase">
-                        {project.role}
-                      </span>
-                    </div>
-                    <h3 className="text-4xl md:text-6xl font-bold text-white tracking-tighter leading-none">
+                    <span className="text-blue-400 font-mono text-xs font-bold tracking-[0.4em] uppercase">
+                      {project.role}
+                    </span>
+                    <h3 className="text-4xl md:text-6xl font-bold text-white tracking-tight">
                       {project.title}
                     </h3>
                   </div>
 
-                  <p className="text-lg md:text-xl text-slate-400 leading-[1.8] font-light tracking-wide italic">
-                    "{project.description}"
+                  <p className="text-lg md:text-xl text-slate-400 leading-relaxed font-light max-w-xl">
+                    {project.description}
                   </p>
 
-                  {/* TECH STACK TAGS */}
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex flex-wrap gap-2">
                     {project.stack.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-xs font-bold uppercase tracking-widest text-slate-300 backdrop-blur-sm"
-                      >
+                      <span key={tech} className="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-[10px] font-bold uppercase tracking-widest text-slate-400">
                         {tech}
                       </span>
                     ))}
                   </div>
+                </motion.div>
 
-                  {/* ACTION BUTTONS */}
-                  <div className="flex flex-wrap items-center gap-6 pt-8">
-                    {/* LIVE DEMO BUTTON */}
+                {/* 2. RIGHT SIDE: IMAGE SHOWCASE & COMPACT BUTTONS */}
+                <motion.div 
+                   initial={{ opacity: 0, scale: 0.9 }}
+                   whileInView={{ opacity: 1, scale: 1 }}
+                   viewport={{ once: true }}
+                   className="w-full lg:w-1/2 space-y-10"
+                >
+                  <div className="grid grid-cols-2 gap-4 relative group">
+                    {/* Visual Background Glow */}
+                    <div 
+                      className="absolute inset-0 blur-[100px] opacity-20 pointer-events-none" 
+                      style={{ backgroundColor: project.color }}
+                    />
+                    
+                    {project.images.map((img, i) => (
+                      <div key={i} className={`relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl ${i === 1 ? 'mt-12' : ''}`}>
+                        <img src={img} alt="Snapshot" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* PROJECT ACTION LINKS - PLACED UNDER IMAGES FOR BETTER ROOM */}
+                  <div className="flex flex-wrap items-center gap-4 pt-4">
                     <motion.a
                       href={project.liveUrl}
                       target="_blank"
                       rel="noreferrer"
-                      whileHover={{ scale: 1.05, y: -4 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="group flex items-center gap-3 px-10 py-5 bg-white text-black rounded-2xl font-black text-sm uppercase tracking-tighter shadow-[0_20px_40px_rgba(255,255,255,0.1)] transition-all"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="flex items-center gap-2 px-6 py-4 bg-white text-black rounded-xl font-bold text-xs uppercase tracking-widest transition-all"
                     >
-                      Live Preview <ArrowUpRight size={20} className="group-hover:rotate-45 transition-transform" />
+                      Live Demo <ExternalLink size={16} />
                     </motion.a>
 
-                    {/* SOURCE CODE LINKS */}
-                    <div className="flex gap-4">
+                    <div className="flex gap-3">
                       <motion.a
                         href={project.frontEndRepo}
                         target="_blank"
-                        whileHover={{ y: -3, backgroundColor: 'rgba(255,255,255,0.08)' }}
-                        className="p-5 border border-white/10 rounded-2xl text-white flex items-center gap-3 transition-colors bg-white/5"
-                        title="Frontend Source"
+                        className="p-4 bg-white/5 border border-white/10 rounded-xl text-white hover:bg-white/10 transition-colors"
+                        title="Client Code"
                       >
-                        <Github size={22} />
-                        <span className="text-xs font-bold uppercase tracking-widest">Client</span>
+                        <Github size={20} />
                       </motion.a>
                       <motion.a
                         href={project.backEndRepo}
                         target="_blank"
-                        whileHover={{ y: -3, backgroundColor: 'rgba(255,255,255,0.08)' }}
-                        className="p-5 border border-white/10 rounded-2xl text-white flex items-center gap-3 transition-colors bg-white/5"
-                        title="Backend Source"
+                        className="p-4 bg-white/5 border border-white/10 rounded-xl text-white hover:bg-white/10 transition-colors"
+                        title="Server Code"
                       >
-                        <Server size={22} />
-                        <span className="text-xs font-bold uppercase tracking-widest">Server</span>
+                        <Server size={20} />
                       </motion.a>
                     </div>
                   </div>
-                </div>
-
-                {/* IMAGE SHOWCASE */}
-                <div className="w-full lg:w-1/2 grid grid-cols-2 gap-6 relative group">
-                  {/* Background Glow */}
-                  <div 
-                    className="absolute inset-0 blur-[120px] opacity-20 group-hover:opacity-40 transition-opacity duration-700 pointer-events-none" 
-                    style={{ backgroundColor: project.color }}
-                  />
-                  
-                  {project.images.map((img, i) => (
-                    <motion.div
-                      key={i}
-                      whileHover={{ scale: 1.02, rotate: i === 0 ? -2 : 2 }}
-                      className={`relative aspect-[4/3] rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl z-10 transition-all duration-500 ${
-                        i === 1 ? 'lg:mt-24 shadow-blue-500/10' : 'shadow-emerald-500/10'
-                      }`}
-                    >
-                      <img
-                        src={img}
-                        alt="Project Snapshot"
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      />
-                    </motion.div>
-                  ))}
-                </div>
+                </motion.div>
 
               </div>
-              
-              {/* Modern Divider */}
-              {index !== projects.length - 1 && (
-                <div className="mt-64 h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-              )}
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

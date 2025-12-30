@@ -1,21 +1,10 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowDown, Github, Linkedin, Mail, Sparkles } from 'lucide-react';
-import { useState, useEffect } from 'react';
 
 // 1. MUST IMPORT IMAGES LIKE THIS FOR VITE/NETLIFY
 import profilePic from '../assets/1733927345216.jpg';
 
 const Hero = () => {
-  const [currentText, setCurrentText] = useState(0);
-  const texts = ['Sameer Bashir', 'Full Stack Developer', 'AI Powered Developer'];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentText((prev) => (prev + 1) % texts.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
   const scrollToProjects = () => {
     document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -51,7 +40,7 @@ const Hero = () => {
       <div className="relative z-10 container mx-auto px-6 py-12 md:py-20">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
           
-          {/* 3. PROFILE IMAGE - ENHANCED FOR ALL SCREENS */}
+          {/* 3. PROFILE IMAGE */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -65,7 +54,7 @@ const Hero = () => {
                 transition={{ duration: 4, repeat: Infinity }}
               />
               <img
-                src={profilePic} // Using the imported variable
+                src={profilePic}
                 alt="Sameer Bashir"
                 className="relative w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 object-cover rounded-3xl border-2 border-white/10 shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500"
               />
@@ -73,8 +62,8 @@ const Hero = () => {
           </motion.div>
 
           {/* Right Side - Text Content */}
-          <div className="flex-1 text-center lg:text-left space-y-6 md:space-y-8 max-w-2xl">
-            <div className="space-y-4">
+          <div className="flex-1 text-center lg:text-left space-y-4 md:space-y-6 max-w-2xl">
+            <div className="space-y-2">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -87,38 +76,47 @@ const Hero = () => {
                 </span>
               </motion.div>
 
-              {/* Text heights fixed for mobile */}
-              <div className="min-h-[120px] md:min-h-[160px] flex items-center justify-center lg:justify-start">
-                <AnimatePresence mode="wait">
-                  <motion.h1
-                    key={currentText}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[1.1]"
-                    style={{
-                      background: 'linear-gradient(to right, #fff, #94a3b8)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                    }}
-                  >
-                    {texts[currentText]}
-                  </motion.h1>
-                </AnimatePresence>
-              </div>
+              {/* STATIC NAME */}
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-tight"
+                style={{
+                  background: 'linear-gradient(to right, #fff, #94a3b8)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                }}
+              >
+                Sameer Bashir
+              </motion.h1>
+
+              {/* ROLES & DETAILS */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="flex flex-wrap justify-center lg:justify-start gap-x-4 gap-y-2 text-blue-400 font-mono text-sm md:text-base font-bold tracking-widest uppercase"
+              >
+                <span>Full Stack Developer</span>
+                <span className="hidden md:inline text-slate-700">|</span>
+                <span>AI Engineer</span>
+                <span className="hidden md:inline text-slate-700">|</span>
+                <span>AI Enthusiast</span>
+              </motion.div>
 
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="text-base md:text-xl text-slate-400 leading-relaxed font-light tracking-wide"
+                transition={{ duration: 0.6, delay: 0.5 }}
+                className="text-base md:text-xl text-slate-400 leading-relaxed font-light tracking-wide pt-4"
               >
                 Architecting scalable applications with modern stacks. 
                 Focusing on performance, AI integration, and seamless user experiences.
               </motion.p>
             </div>
 
-            {/* BUTTONS IMPROVED */}
+            {/* BUTTONS */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -150,11 +148,15 @@ const Hero = () => {
               transition={{ delay: 0.8 }}
               className="flex gap-4 justify-center lg:justify-start pt-4"
             >
-              {[Github, Linkedin, Mail].map((Icon, i) => (
-                <a key={i} href="#" className="p-3 bg-white/5 border border-white/10 rounded-full text-slate-400 hover:text-white hover:border-blue-500/50 transition-all">
-                  <Icon size={20} />
-                </a>
-              ))}
+              <a href="https://github.com/Sameer251369" target="_blank" rel="noreferrer" className="p-3 bg-white/5 border border-white/10 rounded-full text-slate-400 hover:text-white hover:border-blue-500/50 transition-all">
+                <Github size={20} />
+              </a>
+              <a href="https://www.linkedin.com/in/sameer-bashir" target="_blank" rel="noreferrer" className="p-3 bg-white/5 border border-white/10 rounded-full text-slate-400 hover:text-white hover:border-blue-500/50 transition-all">
+                <Linkedin size={20} />
+              </a>
+              <a href="mailto:your-email@example.com" className="p-3 bg-white/5 border border-white/10 rounded-full text-slate-400 hover:text-white hover:border-blue-500/50 transition-all">
+                <Mail size={20} />
+              </a>
             </motion.div>
           </div>
         </div>
