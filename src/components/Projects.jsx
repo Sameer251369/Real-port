@@ -1,6 +1,5 @@
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { Github, Server, ExternalLink, ArrowUpRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Github, Server, ExternalLink } from 'lucide-react';
 
 // --- AGRO AI IMAGES ---
 import agro1 from '../assets/Screenshot 2025-12-30 143825.png';
@@ -14,138 +13,153 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: 'Agro AI: Disease Detector',
+      title: 'Agro AI',
+      subtitle: 'Disease Detection Platform',
       role: 'Full Stack AI Engineer',
       description:
-        'A high-performance agricultural diagnostic platform. I engineered a custom neural network backend to identify crop pathologies, integrated with a real-time React dashboard for instant treatment protocols.',
+        'An agricultural intelligence platform that detects crop diseases using deep learning. Built with a scalable Django backend and a real-time React dashboard for actionable insights.',
       images: [agro1, agro2],
-      stack: ['Django REST', 'React', 'PyTorch', 'JWT Auth'],
+      stack: ['Django REST', 'React', 'PyTorch', 'JWT'],
       liveUrl: 'https://agro-ai-frontend.vercel.app/',
       frontEndRepo: 'https://github.com/Sameer251369/AGRO-AI-frontend.git',
       backEndRepo: 'https://github.com/Sameer251369/AGRO-AI-backend-.git',
-      color: '#10b981',
+      accent: '#10b981',
     },
     {
       id: 2,
-      title: 'Shoecart: Premium E-Com',
+      title: 'Shoecart',
+      subtitle: 'Premium E-Commerce',
       role: 'Lead Full Stack Developer',
       description:
-        'A luxury footwear storefront built for scale. Features a stateless Django architecture, granular search filtering, persistent cart management, and a highly polished checkout experience.',
+        'A modern e-commerce platform focused on performance and UX. Features advanced filtering, persistent cart logic, and a polished checkout flow.',
       images: [shoe1, shoe2],
-      stack: ['Django DRF', 'Tailwind CSS', 'Redux', 'PostgreSQL'],
+      stack: ['Django DRF', 'Tailwind', 'Redux', 'PostgreSQL'],
       liveUrl: 'https://shoecart-front.vercel.app/',
       frontEndRepo: 'https://github.com/Sameer251369/Shoecart.git',
       backEndRepo: 'https://github.com/Sameer251369/shoecart-backend.git',
-      color: '#3b82f6',
+      accent: '#3b82f6',
     },
   ];
 
   return (
-    <section id="projects" className="py-32 bg-[#020617] overflow-hidden">
+    <section id="projects" className="bg-[#020617] py-32">
       <div className="max-w-7xl mx-auto px-6">
-        
-        {/* Section Heading */}
-        <div className="mb-32">
-          <motion.h2 
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            className="text-5xl md:text-7xl font-black text-white tracking-tighter"
-          >
-            SELECTED <span className="text-blue-500">WORKS</span>
-          </motion.h2>
-        </div>
 
-        <div className="space-y-80">
+        {/* SECTION HEADER */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-24 text-center"
+        >
+          <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white">
+            Selected <span className="text-blue-500">Projects</span>
+          </h2>
+          <p className="mt-4 text-slate-400 max-w-xl mx-auto">
+            A small collection of products I’ve designed and engineered end-to-end.
+          </p>
+        </motion.div>
+
+        {/* PROJECTS */}
+        <div className="space-y-40">
           {projects.map((project, index) => (
-            <div key={project.id} className="relative">
-              {/* Flex container for Content and Visuals */}
-              <div className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-16 lg:gap-24 items-center`}>
-                
-                {/* 1. LEFT SIDE: SPACIOUS TEXT CONTENT */}
-                <motion.div 
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="w-full lg:w-1/2 space-y-8"
-                >
-                  <div className="space-y-4">
-                    <span className="text-blue-400 font-mono text-xs font-bold tracking-[0.4em] uppercase">
-                      {project.role}
-                    </span>
-                    <h3 className="text-4xl md:text-6xl font-bold text-white tracking-tight">
-                      {project.title}
-                    </h3>
-                  </div>
+            <div
+              key={project.id}
+              className={`grid lg:grid-cols-2 gap-16 lg:gap-24 items-center ${
+                index % 2 !== 0 ? 'lg:grid-flow-col-dense' : ''
+              }`}
+            >
 
-                  <p className="text-lg md:text-xl text-slate-400 leading-relaxed font-light max-w-xl">
-                    {project.description}
-                  </p>
+              {/* TEXT */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="space-y-6 max-w-xl"
+              >
+                <span className="text-blue-400 font-mono text-xs tracking-widest uppercase">
+                  {project.role}
+                </span>
 
-                  <div className="flex flex-wrap gap-2">
-                    {project.stack.map((tech) => (
-                      <span key={tech} className="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-[10px] font-bold uppercase tracking-widest text-slate-400">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </motion.div>
+                <div>
+                  <h3 className="text-3xl md:text-5xl font-bold text-white tracking-tight">
+                    {project.title}
+                  </h3>
+                  <p className="text-slate-400 mt-2">{project.subtitle}</p>
+                </div>
 
-                {/* 2. RIGHT SIDE: IMAGE SHOWCASE & COMPACT BUTTONS */}
-                <motion.div 
-                   initial={{ opacity: 0, scale: 0.9 }}
-                   whileInView={{ opacity: 1, scale: 1 }}
-                   viewport={{ once: true }}
-                   className="w-full lg:w-1/2 space-y-10"
-                >
-                  <div className="grid grid-cols-2 gap-4 relative group">
-                    {/* Visual Background Glow */}
-                    <div 
-                      className="absolute inset-0 blur-[100px] opacity-20 pointer-events-none" 
-                      style={{ backgroundColor: project.color }}
-                    />
-                    
-                    {project.images.map((img, i) => (
-                      <div key={i} className={`relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl ${i === 1 ? 'mt-12' : ''}`}>
-                        <img src={img} alt="Snapshot" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
-                      </div>
-                    ))}
-                  </div>
+                <p className="text-slate-400 leading-relaxed">
+                  {project.description}
+                </p>
 
-                  {/* PROJECT ACTION LINKS - PLACED UNDER IMAGES FOR BETTER ROOM */}
-                  <div className="flex flex-wrap items-center gap-4 pt-4">
-                    <motion.a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="flex items-center gap-2 px-6 py-4 bg-white text-black rounded-xl font-bold text-xs uppercase tracking-widest transition-all"
+                {/* STACK */}
+                <div className="flex flex-wrap gap-2 pt-2">
+                  {project.stack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-3 py-1 text-[10px] uppercase tracking-widest rounded-md bg-white/5 border border-white/10 text-slate-400"
                     >
-                      Live Demo <ExternalLink size={16} />
-                    </motion.a>
+                      {tech}
+                    </span>
+                  ))}
+                </div>
 
-                    <div className="flex gap-3">
-                      <motion.a
-                        href={project.frontEndRepo}
-                        target="_blank"
-                        className="p-4 bg-white/5 border border-white/10 rounded-xl text-white hover:bg-white/10 transition-colors"
-                        title="Client Code"
-                      >
-                        <Github size={20} />
-                      </motion.a>
-                      <motion.a
-                        href={project.backEndRepo}
-                        target="_blank"
-                        className="p-4 bg-white/5 border border-white/10 rounded-xl text-white hover:bg-white/10 transition-colors"
-                        title="Server Code"
-                      >
-                        <Server size={20} />
-                      </motion.a>
-                    </div>
+                {/* LINKS */}
+                <div className="flex items-center gap-4 pt-6">
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black rounded-xl font-semibold text-sm"
+                  >
+                    Live Demo <ExternalLink size={16} />
+                  </a>
+
+                  <a
+                    href={project.frontEndRepo}
+                    target="_blank"
+                    className="p-3 rounded-xl border border-white/10 text-white hover:bg-white/5 transition"
+                  >
+                    <Github size={20} />
+                  </a>
+
+                  <a
+                    href={project.backEndRepo}
+                    target="_blank"
+                    className="p-3 rounded-xl border border-white/10 text-white hover:bg-white/5 transition"
+                  >
+                    <Server size={20} />
+                  </a>
+                </div>
+              </motion.div>
+
+              {/* IMAGES */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                className="relative grid grid-cols-2 gap-4"
+              >
+                {/* Glow */}
+                <div
+                  className="absolute inset-0 blur-[120px] opacity-20 pointer-events-none"
+                  style={{ backgroundColor: project.accent }}
+                />
+
+                {project.images.map((img, i) => (
+                  <div
+                    key={i}
+                    className="overflow-hidden rounded-2xl border border-white/10 shadow-xl"
+                  >
+                    <img
+                      src={img}
+                      alt="Project screenshot"
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                    />
                   </div>
-                </motion.div>
+                ))}
+              </motion.div>
 
-              </div>
             </div>
           ))}
         </div>
