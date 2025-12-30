@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+:root {
+  --color-bg-primary: #0A0E27;
+  --color-bg-secondary: #151B3D;
+  --color-bg-card: #1A2142;
+  --color-primary: #4666FF;
+  --color-secondary: #1560BD;
+  --color-accent-purple: #9400D3;
+  --color-accent-cyan: #008B8B;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #B4B4C8;
+  --color-text-muted: #6B7280;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.section-container {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.gradient-text {
+  background: linear-gradient(to right, var(--color-primary), var(--color-accent-purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.glass-effect {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.aurora-bg {
+  background: 
+    radial-gradient(ellipse 80% 80% at 50% -20%, rgba(70, 102, 255, 0.3), transparent),
+    radial-gradient(ellipse 60% 60% at 80% 50%, rgba(148, 0, 211, 0.2), transparent),
+    radial-gradient(ellipse 50% 50% at 20% 80%, rgba(0, 139, 139, 0.2), transparent);
+}
