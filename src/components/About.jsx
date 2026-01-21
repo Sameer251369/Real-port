@@ -31,7 +31,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-24 bg-[#020617] relative overflow-hidden" ref={ref}>
+    <section id="about" className="bg-[#020617] relative overflow-hidden" ref={ref}>
       {/* Decorative background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none">
         <div className="absolute top-0 left-0 w-64 h-64 bg-blue-600/10 blur-[100px] rounded-full"></div>

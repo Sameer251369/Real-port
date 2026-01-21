@@ -42,7 +42,7 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="bg-[#020617] py-32">
+    <section id="projects" className="bg-[#020617]">
       <div className="max-w-7xl mx-auto px-6">
 
         {/* SECTION HEADER */}

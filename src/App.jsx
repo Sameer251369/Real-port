@@ -13,34 +13,34 @@ function App() {
       <Navbar />
 
       {/* HERO — no top padding, it's the entry */}
-      <section>
+      <section id="home">
         <Hero />
       </section>
 
       {/* ABOUT */}
-      <section className="py-24 md:py-32">
+      <section className="py-20 md:py-28">
         <About />
       </section>
 
       {/* SKILLS */}
-      <section className="py-24 md:py-32">
+      <section className="py-20 md:py-28">
         <Skills />
       </section>
 
       {/* PROJECTS — slightly more space */}
-      <section className="py-28 md:py-36">
+      <section className="py-24 md:py-32">
         <Projects />
       </section>
 
       {/* CONTACT */}
-      <section className="py-24 md:py-32">
+      <section className="py-20 md:py-28">
         <Contact />
       </section>
 
       {/* FOOTER — tighter */}
-      <section className="pt-16 pb-8">
+      <section className="pt-12 pb-6">
         <Footer />
-      </section>
+    </section>
 
     </div>
   );

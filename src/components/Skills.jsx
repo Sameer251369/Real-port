@@ -46,7 +46,7 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-32 bg-[#020617] relative" ref={ref}>
+    <section id="skills" className="bg-[#020617] relative" ref={ref}>
       {/* Background Decorative Elements */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent" />
       

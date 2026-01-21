@@ -1,6 +1,7 @@
+
 import { motion } from 'framer-motion';
 import { ArrowDown, Github, Linkedin, Mail, Sparkles } from 'lucide-react';
-import bgImage from '../assets/1733927345216.jpg';
+import profilePic from '../assets/1733927345216.jpg';
 
 const Hero = () => {
   const scrollToProjects = () => {
@@ -10,34 +11,50 @@ const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#020617]">
 
-      {/* Background Image */}
+      {/* Background image */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: `url(${bgImage})`,
+          backgroundImage: `url(${profilePic})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          opacity: 0.18, // 👈 more visible but still elegant
+          opacity: 0.12,
         }}
       />
-
-      {/* Dark overlay for readability */}
       <div className="absolute inset-0 bg-[#020617]/70" />
 
-      {/* Soft animated gradient */}
+      {/* Soft gradient */}
       <motion.div
         className="absolute inset-0"
         animate={{
           background: [
-            'radial-gradient(circle at 30% 30%, rgba(59,130,246,0.2), transparent 55%)',
-            'radial-gradient(circle at 70% 70%, rgba(147,51,234,0.2), transparent 55%)',
+            'radial-gradient(circle at 30% 30%, rgba(59,130,246,0.18), transparent 55%)',
+            'radial-gradient(circle at 70% 70%, rgba(147,51,234,0.18), transparent 55%)',
           ],
         }}
         transition={{ duration: 14, repeat: Infinity, repeatType: 'mirror' }}
       />
 
       {/* CONTENT */}
-      <div className="relative z-10 max-w-3xl px-6 text-center space-y-6">
+      <div className="relative z-10 flex flex-col items-center text-center px-6 max-w-3xl space-y-6">
+
+        {/* PROFILE PIC */}
+        <motion.img
+          src={profilePic}
+          alt="Sameer Bashir"
+          initial={{ opacity: 0, scale: 0.85 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          className="
+            w-28 h-28
+            sm:w-32 sm:h-32
+            md:w-40 md:h-40
+            object-cover
+            rounded-full
+            border border-white/15
+            shadow-2xl
+          "
+        />
 
         {/* Badge */}
         <motion.span
@@ -55,7 +72,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight"
         >
-          <span className="bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-red from-white to-slate-300 bg-clip-text text-transparent">
             Sameer Bashir
           </span>
         </motion.h1>
@@ -73,10 +90,10 @@ const Hero = () => {
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-slate-400 text-base md:text-lg leading-relaxed"
+          className="text-slate-400 text-base md:text-lg leading-relaxed max-w-xl"
         >
           Building scalable, high-performance applications with modern stacks
-          and practical AI — focused on clean UX and real-world results.
+          and practical AI — focused on clean UX and real-world impact.
         </motion.p>
 
         {/* Buttons */}
@@ -116,7 +133,7 @@ const Hero = () => {
             <Linkedin size={20} />
           </a>
           <a
-            href="mailto:Sameerbashir522@gmail.com"
+            href="sameerbashir522@gmail.com"
             className="p-3 rounded-full border border-white/10 text-slate-400 hover:text-white hover:border-blue-500/50 transition"
           >
             <Mail size={20} />
@@ -129,4 +146,3 @@ const Hero = () => {
 };
 
 export default Hero;
-
