@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 import { ArrowDown, Github, Linkedin, Mail, Sparkles } from 'lucide-react';
 import profilePic from '../assets/1733927345216.jpg';
@@ -10,7 +9,6 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#020617]">
-
       {/* Background image */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -23,7 +21,7 @@ const Hero = () => {
       />
       <div className="absolute inset-0 bg-[#020617]/70" />
 
-      {/* Soft gradient */}
+      {/* Animated Soft Gradient */}
       <motion.div
         className="absolute inset-0"
         animate={{
@@ -37,7 +35,7 @@ const Hero = () => {
 
       {/* CONTENT */}
       <div className="relative z-10 flex flex-col items-center text-center px-6 max-w-3xl space-y-6">
-
+        
         {/* PROFILE PIC */}
         <motion.img
           src={profilePic}
@@ -45,15 +43,7 @@ const Hero = () => {
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
-          className="
-            w-28 h-28
-            sm:w-32 sm:h-32
-            md:w-40 md:h-40
-            object-cover
-            rounded-full
-            border border-white/15
-            shadow-2xl
-          "
+          className="w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 object-cover rounded-full border border-white/15 shadow-2xl"
         />
 
         {/* Badge */}
@@ -72,7 +62,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight"
         >
-          <span className="bg-gradient-to-red from-white to-slate-300 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
             Sameer Bashir
           </span>
         </motion.h1>
@@ -101,14 +91,14 @@ const Hero = () => {
           <motion.button
             onClick={scrollToProjects}
             whileHover={{ y: -2 }}
-            className="px-8 py-4 rounded-xl bg-white text-black font-semibold flex items-center justify-center gap-2"
+            className="px-8 py-4 rounded-xl bg-white text-black font-semibold flex items-center justify-center gap-2 transition-transform"
           >
             View Work <ArrowDown size={16} />
           </motion.button>
 
           <motion.button
             whileHover={{ y: -2 }}
-            className="px-8 py-4 rounded-xl border border-white/15 text-white font-semibold hover:bg-white/5"
+            className="px-8 py-4 rounded-xl border border-white/15 text-white font-semibold hover:bg-white/5 transition-colors"
           >
             Download CV
           </motion.button>
@@ -119,7 +109,7 @@ const Hero = () => {
           <a
             href="https://github.com/Sameer251369"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="p-3 rounded-full border border-white/10 text-slate-400 hover:text-white hover:border-blue-500/50 transition"
           >
             <Github size={20} />
@@ -127,19 +117,18 @@ const Hero = () => {
           <a
             href="https://www.linkedin.com/in/sameer-bashir"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="p-3 rounded-full border border-white/10 text-slate-400 hover:text-white hover:border-blue-500/50 transition"
           >
             <Linkedin size={20} />
           </a>
           <a
-            href="sameerbashir522@gmail.com"
+            href="mailto:sameerbashir522@gmail.com"
             className="p-3 rounded-full border border-white/10 text-slate-400 hover:text-white hover:border-blue-500/50 transition"
           >
             <Mail size={20} />
           </a>
         </div>
-
       </div>
     </section>
   );
